@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Rammer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="rammer_blog/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS for the 'Rammer' Template -->
+    <link href="rammer_blog/css/rammer.css" rel="stylesheet">
+  </head>
+
+  <body>
+  <a href="https://github.com/qburstruby/rammer"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <div class="full-width-image-1">
+
+      <!-- <div class="logo-wrapper">
+        <img class="img-responsive" src="http://placehold.it/200x200&text=Logo" />
+
+      </div> -->
+
+    </div><!-- /full-width-image-1 -->
+
+    <!-- section for What is Rammer -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 section">
+            <h1 class="section-heading">What is Rammer?</h1>
+            <p class="lead section-lead">Rammer is a framework dedicated to build high performance Async API servers on top of non-blocking (asynchronous) Ruby web server called <a href="http://postrank-labs.github.io/goliath/" target="_blank">Goliath</a>. Rammer APIs are designed on top of REST-like API micro-framework <a href="http://intridea.github.io/grape/" target="_blank">Grape</a>. Rammer is modular and integrates a powerful CLI called Viber to plug in and out its modules.</p>
+          </div>
+        </div>
+      </div>
+    <!-- /section for What is Rammer -->
+
+
+
+    <!-- <div class="full-width-image-2"> -->
+      <!-- box content goes here if you want to put text or a button in here -->
+    <!-- </div> -->
+    <!-- /full-width-image-2 -->
+    
+
+    <!-- section for Getting Started -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 section">
+            <h1 class="section-heading">Getting Started</h1>
+            <p class="lead section-lead">Rammer is available as a gem, to use it just install the gem:</p>
+            <pre class="code"><span class="identifier">gem </span><span class="identifier">install rammer</span></pre>
+            <p class="lead section-lead">Usage:</p>
+            <pre class="code"><span class="identifier">rammer application_name </span></pre>
+            <div class="col-md-offset-2">
+              <img src="rammer_blog/img/ss_01.png"></img>
+            </div>
+            <pre class="code"><span class="identifier">cd application_name </span></pre>
+            <pre class="code"><span class="identifier">bundle install</span></pre>
+            <dl class="section-sub-heading">This will install the missing gems and now application is ready to run the Goliath server.</dl>
+            <p class="lead section-lead">To start the server</p>
+            <pre class="code"><span class="identifier">ruby server.rb -vs</span></pre>
+            <dl class="section-sub-heading">This command will run the Goliath server in the default port:9000 </dl>
+          </div>
+        </div>
+      </div>
+    <!-- section for /Getting Started -->
+
+
+    <!-- section for Rammer Modules -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 section">
+            <h1 class="section-heading">Rammer Modules</h1>
+            <p class="lead section-lead">Currently Rammer supports 3 modules</p>
+            <pre class="code"><li>Authentication</li><li>Authorization</li><li>Oauth</li></pre>
+            <h2 class="lead section-lead">Plugin/Unplugin Rammer Modules : Use CLI command " viber "</h2>
+            <pre class="code"><span class="identifier">$ viber module < COMMAND > < MODULE_NAME ></span></pre>
+            <p>< COMMAND ></p>
+            <pre class="code"><li>-p or -plugin (Plugs in the specified module)</li><li>-u or -unplug (Unplugs the specified module)</li></pre>
+            <p>< MODULE_NAME ></p>
+            <pre class="code"><li>authentication</li><li>authorization</li><li>oauth</li></pre>
+            <div class="col-md-offset-2">
+              <img src="rammer_blog/img/ss_02.png"></img>
+            </div>
+            <dl class="section-sub-heading">This will generate the required files </dl>
+          </div>
+        </div>
+      </div>
+    <!-- section for /Rammer Modules -->
+
+    <!-- section for Endpoints -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 section">
+            <h1 class="section-heading">Endpoints Mounted with Rammer Modules</h1>
+            <p class="lead section-lead" style="font-size: 20px;">Authentication Module Endpoint</p>
+            <pre class="code">
+              <table class="views-table cols-2" style="margin-bottom: -30px;">
+              <p style="margin-top: -20px;margin-left: -10px;"> Basic path : /v1/authentication</p>
+                <thead>
+                <tr>
+                    <th class="views-field views-field-title">Resource </th>
+                    <th class="views-field views-field-body">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd">
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/sign_up</a>                                    </td>
+                        <td class="views-field views-field-body">Enables user registration using basic credentials : email, MD5 hash password and a redirect url of base applicat-ion. Allows auto login funcationality returning a session token for further api access.</td>
+                    </tr>
+                </tbody>
+              </table>
+            </pre>            
+            <pre class="request">
+              <p>Request format: </p>
+              <p>{</p>
+              <p>"email"=> "User email",</p>
+              <p>"password" => "MD5 hash encrypted password",</p>
+              <p>"redirect_uri" => "Url to which the token should be redirected"</p>
+              <p>}</p>
+            </pre>
+            <p class="lead section-lead" style="font-size: 20px;">Authorization Module Endpoints</p>
+            <pre class="code">
+              <table class="views-table cols-2" style="margin-bottom: -30px;">
+              <p style="margin-top: -20px;margin-left: -10px;"> Basic path : /v1/authorization</p>
+                <thead>
+                <tr>
+                    <th class="views-field views-field-title">Resource </th>
+                    <th class="views-field views-field-body">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd">
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/sign_in</a>                                </td>
+                        <td class="views-field views-field-body">Enables user login using basic credentials : email, MD5 hash password and a redirect url of base application. Al-lows user authorization returning a session token for further api access.</td>
+                    </tr>
+                    <tr class="odd">
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/sign_out</a>                               </td>
+                        <td class="views-field views-field-body">Enables user logout using basic credentials : email and session token allotted during sign_up/sign_in. The gener-ated session token is invalidated for further access.</td>
+                    </tr>
+                </tbody>
+              </table>
+            </pre>
+            <pre class="request">
+              <p>Request format for /sign_in: </p>
+              <p>{</p>
+              <p>"email"=> "User email",</p>
+              <p>"password" => "MD5 hash encrypted password",</p>
+              <p>"redirect_uri" => "Url to which the token should be redirected"</p>
+              <p>}</p>
+              <p>Request format for /sign_out: </p>
+              <p>{</p>
+              <p>"email"=> "User email",</p>
+              <p>"session_token" => "Session token obtained during sign in",</p>
+              <p>"redirect_uri" => "Url to which the token should be redirected"</p>
+              <p>}</p>
+            </pre>
+            <p class="lead section-lead" style="font-size: 20px;">Oauth Module Endpoints</p>
+            <pre class="code">
+              <table class="views-table cols-2" style="margin-bottom: -30px;">
+              <p style="margin-top: -20px; margin-left: -10px;"> Basic path : /v1/oauth</p>
+                <thead>
+                <tr>
+                    <th class="views-field views-field-title">Resource </th>
+                    <th class="views-field views-field-body">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd">
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/register_client</a>                                        </td>
+                        <td class="views-field views-field-body">Enables client registeration using basic credentials: client name and a redirect url of base application. Returnsclient access details with client id, secret hash key and basic authorization code to be further used for oauth  api access.</td>
+                    </tr>
+                    <tr class="odd">
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/authorize</a>                                        </td>
+                        <td class="views-field views-field-body">Enables user authorization checking functionality for oauth api access. Functionality can be accessed by specify-ing an authorization page url.</td>
+                    </tr>
+                    <tr class="odd">
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/access_token</a>                                         </td>
+                        <td class="views-field views-field-body">Enables user oauth authorization using credentials: client_id (obtained during client registration), redirect_uri(specified while registration), response_type, username (session token obtained during user authorization). Retu-rns an access token for api access.</td>
+                    </tr>
+                    <tr class="odd">
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/token</a>                                        </td>
+                        <td class="views-field views-field-body">Enables user authorization checking functionality for oauth api access. Functionality can be accessed by specify-ing an authorization page url.</td>
+                    </tr>
+                    <tr class="odd">
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/invalidate_token</a>                                         </td>
+                        <td class="views-field views-field-body">Enables user authorization checking functionality for oauth api access. Functionality can be accessed by specify-ing an authorization page url.</td>
+                    </tr>
+                </tbody>
+              </table>
+            </pre>
+            <pre class="request">
+              <p>Request format for /register_client: </p>
+              <p>{</p>
+              <p>"name"=> "Client's name",</p>
+              <p>"redirect_uri" => "URL to which the oauth should be redirected",</p>
+              <p>}</p>
+              <p>Request format for /authorize: </p>
+              <p>{</p>
+              <p>"client_id"=> "Client's registered ID",</p>
+              <p>"username" => "Authorized user's session id",</p>
+              <p>"redirect_uri" => "URL to which the oauth should be redirected",</p>
+              <p>"response_type" => "token" (Keyword to return request token)</p>
+              <p>}</p>
+              <p>Request format for /access_token: </p>
+              <p>{</p>
+              <p>"client_id"=> "Client's registered ID",</p>
+              <p>"username" => "Authorized user's session id",</p>
+              <p>"redirect_uri" => "URL to which the oauth should be redirected",</p>
+              <p>"response_type" => "token" (Keyword to return request token)</p>
+              <p>}</p>
+              <p>Request format for /token: </p>
+              <p>{</p>
+              <p>"client_id"=> "Client's registered ID",</p>
+              <p>"authorization" => "Basic authorization key generated while client registration",</p>
+              <p>"host_name" => "Third party client's name",</p>
+              <p>"redirect_uri" => "URL to which the oauth should be redirected",</p>
+              <p>"response_type" => "token" (Keyword to return request token)</p>
+              <p>}</p>
+              <p>Request format for /invalidate_token: </p>
+              <p>{</p>
+              <p>"client_id"=> "Client's registered ID",</p>
+              <p>"authorization" => "Basic authorization key generated while client registration",</p>
+              <p>"host_name" => "Third party client's name",</p>
+              <p>"redirect_uri" => "URL to which the oauth should be redirected",</p>
+              <p>"response_type" => "token" (Keyword to return request token)</p>
+              <p>}</p>
+            </pre>
+          </div>
+        </div>
+      </div>
+
+    <!-- FOOTER -->
+    <div class="container">
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            Copyright &copy; QBurst 2013 &middot; 
+          </div>
+          <div class="footer-right">
+          Ruby Team
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    </div><!-- /container -->
+
+  <!-- javascript -->
+  <script src="rammer_blog/js/jquery.js"></script>
+  <script src="rammer_blog/js/bootstrap.js"></script>
+
+  </body>
+
+</html>
