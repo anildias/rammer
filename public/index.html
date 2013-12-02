@@ -29,7 +29,7 @@
       </br>
       <p class="caption"> Build high performance Async API servers in a blaze!!</p>
       </br></br>
-      <a href="https://travis-ci.org/qburstruby/rammer-2.0.0"><img src="https://api.travis-ci.org/qburstruby/rammer-2.0.0.png" alt="Build Status"></a>  <a href="https://rubygems.org/gems/rammer"><img src="https://badge.fury.io/rb/rammer.png" alt="gem_version"></a>
+      <a href="https://travis-ci.org/qburstruby/rammer-2.0.0" target="_blank"><img src="https://api.travis-ci.org/qburstruby/rammer-2.0.0.png" alt="Build Status"></a>  <a href="https://rubygems.org/gems/rammer" target="_blank"><img src="https://badge.fury.io/rb/rammer.png" alt="gem_version"></a>
     </div><!-- /full-width-image-1 -->
 
     <!-- section for What is Rammer -->
@@ -81,7 +81,7 @@
             <h1 class="section-heading">Running Tests</h1>
               <p class="lead section-lead">Rammer uses a code coverage analysis tool, called<b> SimpleCov. </b> Its available as a gem in ruby, giving you a complete code coverage for your work.
               </p>
-              <p class="lead section-lead">You can Run tests in command promt by </p>
+              <p class="lead section-lead">You can Run tests in command prompt by </p>
               <pre class="code"><span class="identifier">rake test</span></pre>
               <p class="lead section-lead">When running rake test, this automatically creates a index.html under folder coverage in root directory with details of rammer code coverage. Loading this into any web browser shows the complete code usage of rammer generators.</p>
           </div>
@@ -200,24 +200,35 @@
                 <tbody>
                     <tr class="odd">
                         <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/register_client</a>                                        </td>
-                        <td class="views-field views-field-body">Enables client registeration using basic credentials: client name and a redirect url of base application. Returnsclient access details with client id, secret hash key and basic authorization code to be further used for oauth  api access.</td>
+                        <td class="views-field views-field-body">Enables client registeration using basic credentials: client name and a redirect url of base application.Returns client access details with client id, secret hash key and basic authorization code to be further used for oauth api access.</td>
+
                     </tr>
                     <tr class="odd">
-                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/authorize</a>                                        </td>
-                        <td class="views-field views-field-body">Enables user authorization checking functionality for oauth api access. Functionality can be accessed by specify-ing an authorization page url.</td>
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/authorize</a>                </td>
+                        <td class="views-field views-field-body">Enables user authorization checking functionality for oauth api access. Functionality can be accessed by specifying an authorization page url.</td>
+
+                    </tr>
+                    <tr class="odd">
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/request_token</a>                                        </td>
+                        <td class="views-field views-field-body">Enables user oauth authorization using credentials: client_id (obtained during client registration), redirect_uri(specified while registration), response_type, request_token, username (session token obtained during user authorization). Retu-rns request_token for further api access.</td>
+
                     </tr>
                     <tr class="odd">
                         <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/access_token</a>                                         </td>
-                        <td class="views-field views-field-body">Enables user oauth authorization using credentials: client_id (obtained during client registration), redirect_uri(specified while registration), response_type, username (session token obtained during user authorization). Retu-rns an access token for api access.</td>
+                        <td class="views-field views-field-body">Enables user oauth authorization using credentials: client_id (obtained during client registration), redirect_uri(specified while registration), response_type, request_token, username (session token obtained during user authorization). Retu-rns an access token for api access.</td>
+
                     </tr>
                     <tr class="odd">
-                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/token</a>                                        </td>
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/token</a>                    </td>
                         <td class="views-field views-field-body">Enables user authorization checking functionality for oauth api access. Functionality can be accessed by specify-ing an authorization page url.</td>
+
                     </tr>
                     <tr class="odd">
-                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/invalidate_token</a>                                         </td>
+                        <td class="views-field views-field-title"><a href="#" style="text-decoration: none;color: #76275f;">/invalidate_token</a>         </td>
                         <td class="views-field views-field-body">Enables user authorization checking functionality for oauth api access. Functionality can be accessed by specify-ing an authorization page url.</td>
+
                     </tr>
+                    
                 </tbody>
               </table>
             </pre>
@@ -234,12 +245,20 @@
               <p>"redirect_uri" => "URL to which the oauth should be redirected",</p>
               <p>"response_type" => "token" (Keyword to return request token)</p>
               <p>}</p>
+              <p>Request format for /request_token: </p>
+              <p>{</p>
+              <p>"response_type":"code",</p>
+              <p>"client_id":"client id received on registration",</p>
+              <p>"redirect_uri":"redirect uri specified during registration",</p>
+              <p>"username":"session token value obtained"</p>
+              <p>}</p>
               <p>Request format for /access_token: </p>
               <p>{</p>
-              <p>"client_id"=> "Client's registered ID",</p>
-              <p>"username" => "Authorized user's session id",</p>
-              <p>"redirect_uri" => "URL to which the oauth should be redirected",</p>
-              <p>"response_type" => "token" (Keyword to return request token)</p>
+              <p>"response_type":"token",</p>
+              <p>"client_id":"client id received on registration",</p>
+              <p>"redirect_uri":"redirect uri specified during registration",</p>
+              <p>"username":"session token value obtained",</p>
+              <p>"request_token" : "request token obtained from /request_token endpoint."</p>
               <p>}</p>
               <p>Request format for /token: </p>
               <p>{</p>
@@ -268,7 +287,7 @@
           <div class="col-lg-12 section">
             <h1 class="section-heading">Want to contribute?</h1>
             <p class="lead section-lead" style="font-size: 20px;">You can clone the project with <a href="http://git-scm.com/" target="_blank">Git</a> by running:</p>
-            <pre class="request">$ git clone https://github.com/qburstruby/rammer.git</pre>
+            <pre class="request">$ git clone https://github.com/qburstruby/rammer-2.0.0.git</pre>
           </div>
         </div>
       </div>
@@ -313,7 +332,7 @@
         <footer>
           <div class="row">
             <div class="col-lg-12">
-              Copyright &copy; QBurst 2013 &middot; 
+              Copyright &copy; QBurst 2013 - 2014 &middot; 
             </div>
             <div class="footer-right">
             Ruby Team
